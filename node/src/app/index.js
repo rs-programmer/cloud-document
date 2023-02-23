@@ -6,6 +6,8 @@ const error = require('./error');
 const { logs } = require('./morgan');
 const emit = require('./emit');
 const { TEMPORARILY_CLOSED } = require('../constants/error.type');
+const getRouters = require('../package/router');
+const t1Router = require('../test/t1');
 
 const app = new Koa();
 
@@ -32,19 +34,14 @@ if (STATE_CODE === 'test') {
   app.use(logs);
   app.use(koaBody());
 
-  app.use((ctx) => {
-    // emit(TEMPORARILY_CLOSED, ctx);
-    ctx.body = 'hello word';
-  });
-
   // cookie设置
-  // app.keys = ['abc123'];
+  app.keys = ['abc123'];
 
   // 路由注册
-  // routers(app);
+  getRouters(app);
 
   // 测试路由
-  // app.use(testRouter.routes());
+  app.use(t1Router.routes());
 }
 module.exports = {
   APP_HOST, APP_PORT, app,

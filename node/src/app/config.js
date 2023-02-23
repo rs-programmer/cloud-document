@@ -10,8 +10,8 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 // keys
-const PRIVATE_KEY = fs.readFileSync(path.resolve(__dirname, '../../public/keys/private.key'));
-const PUBLIC_KEY = fs.readFileSync(path.resolve(__dirname, '../../public/keys/public.pem'));
+const PRIVATE_KEY = fs.readFileSync(path.resolve(__dirname, '../../public/keys/private.pem'));
+const PUBLIC_KEY = fs.readFileSync(path.resolve(__dirname, '../../public/keys/public.key'));
 
 const {
   APP_PORT,
